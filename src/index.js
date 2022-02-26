@@ -13,7 +13,7 @@ module.exports = function toReadable (number) {
             return numStr20[n - 10];
         }
         else if (n > 20 && n <= 99) { 
-            return `${numStr100[Number(n.toString()[0])]} ${lastNum}`; 
+            return (n.toString()[1] === '0') ? `${numStr100[n/10]}` : `${numStr100[Number(n.toString()[0])]} ${lastNum}`; 
         }
         else if (n > 99 && n <= 999) { 
             if (n.toString()[1] === '1' ) {
