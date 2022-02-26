@@ -2,7 +2,7 @@ module.exports = function toReadable (number) {
         let n = number;
         let numStr10 = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
         let numStr20 = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty'];
-        let numStr100 = ['zero', 'ten', 'twenty', 'thirty', 'fourty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+        let numStr100 = ['zero', 'ten', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
         let firstNum = numStr10[Number(n.toString()[0])]; // first digit
         let lastNum = numStr10[Number(n.toString()[n.toString().length-1])]; //last digit
 
@@ -22,6 +22,9 @@ module.exports = function toReadable (number) {
             else if (n.toString()[1] === '0') {
                 return (n.toString()[2] === '0') ? `${firstNum} hundred` : `${firstNum} hundred ${lastNum}`;
             }
+            else if (n.toString()[2] === '0') {
+                return `${firstNum} hundred ${numStr100[Number(n.toString()[1])]}`;
+            }
             else {
                 return `${firstNum} hundred ${numStr100[Number(n.toString()[1])]} ${lastNum}`; 
             }
@@ -37,5 +40,6 @@ module.exports = function toReadable (number) {
                 return `${firstNum} thouthand ${numStr10[Number(n.toString()[1])]} hundred ${numStr100[Number(n.toString()[2])]} ${lastNum}`;
             }
         }
+    
     
 }
